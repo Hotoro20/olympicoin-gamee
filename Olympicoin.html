@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympicoin Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #0078D4;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #0078D4;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: #0056A3;
+        }
+        .balance {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .social-buttons img {
+            width: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Olympicoin Game</h1>
+        <p>Mine Olympicoin, invite friends, and earn rewards!</p>
+
+        <div class="balance">
+            <strong>Your Balance:</strong> <span id="balance">0</span> Olympicoin
+        </div>
+
+        <div>
+            <a href="#" class="button" onclick="mine()">⛏️ Start Mining</a>
+            <a href="#" class="button" onclick="linkWallet()">🔗 Link Wallet</a>
+        </div>
+
+        <h2>Social Tasks</h2>
+        <div class="social-buttons">
+            <a href="https://x.com/Aitools25?t=qTP6xfEr4vmt1ssVGkw_vA&s=08" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter">
+            </a>
+            <a href="https://youtube.com/@aitoolsupdate2025?si=pbFsTkq_U_Yt_BcQ" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Youtube%28amin%29.png" alt="YouTube">
+            </a>
+            <a href="https://t.me/AItoolsAItools" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+        </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        const Telegram = window.Telegram.WebApp;
+        let balance = 0;
+
+        function mine() {
+            balance += 50;
+            document.getElementById("balance").innerText = balance;
+
+            // Send data back to Telegram
+            Telegram.sendData(JSON.stringify({ balance: 50 }));
+            alert("⛏️ You mined 50 Olympicoin!");
+        }
+
+        function linkWallet() {
+            const wallet = prompt("Enter your TON wallet address:");
+            if (wallet) {
+                alert("✅ Wallet linked successfully!");
+            } else {
+                alert("❌ No wallet entered.");
+            }
+        }
+
+        // Update the balance based on user data
+        const userData = Telegram.initDataUnsafe;
+        document.body.insertAdjacentHTML("beforeend", `<p>Welcome, ${userData.first_name || "Player"}!</p>`);
+    </script>
+</body>
+</html>
